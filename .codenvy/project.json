@@ -1,0 +1,1 @@
+{"mixinTypes":["contribution"],"builders":{"configs":{}},"runners":{"configs":{}},"type":"GAEPython","attributes":{"contribute_branch":["master"],"contribute_mode":["contribute"],"language":["python"]}}

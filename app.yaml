@@ -9,15 +9,37 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+# https://cloud.google.com/appengine/docs/python/config/appconfig#Python_app_yaml_Builtin_handlers
+builtins:
+- appstats: on
+- deferred: on
+
+# by default we want static files to stay cached for at least a year
+default_expiration: "365d"
+
+# this reduces our warmup time
+inbound_services:
+- warmup
+
 # Handlers define how to route requests to your application.
 handlers:
-- url: /css
-  static_dir: css
-- url: /js
-  static_dir: js
+# handle the favicon here
+- url: /favicon.ico
+  static_files: static/img/favicon.ico
+  upload: static/img/favicon.ico
+  mime_type: image/x-icon
+# our generic static directory
+- url: /static
+  static_dir: static 
+# this regex lets us handle
+- url: /(.*\.(gif|jpg|htm|html|png|txt|xml|zip))
+  static_files: static/\1
+  upload: static/(.*\.(gif|jpg|htm|html|png|txt|xml|zip))  
+  
 # This handler tells app engine how to route requests to a WSGI application.
 - url: /.*   # This regex directs all routes to main.app
   script: main.app
+#  secure: always
 
 # Third party libraries that are included in the App Engine SDK must be listed
 # here if you want to use them.  See
@@ -26,5 +48,20 @@ handlers:
 # of the App Engine SDK don't need to be listed here, instead add them to your
 # project directory, either as a git submodule or as a plain subdirectory.
 libraries:
+- name: jinja2
+  version: "latest"
+- name: markupsafe
+  version: "latest"
 - name: webapp2
-  version: "2.5.2"
+  version: "latest"
+
+
+# https://cloud.google.com/appengine/docs/python/config/appconfig#Python_app_yaml_Custom_error_responses
+error_handlers:
+- file: views/default_errors/default_error.html
+- error_code: dos_api_denial
+  file: views/default_errors/dos_api_denial.html
+- error_code: over_quota
+  file: views/default_errors/over_quota.html
+- error_code: timeout
+  file: views/default_errors/timeout.html
