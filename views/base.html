@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+                                                   ,-._.-._.-._.-._.-.
+                                                   `-.             ,-'
+ .-------------------------------------------.       |             | 
+| Want to view my source?                     |      |             |  
+| I'm flattered.                              |      |             | 
+|                                             |      |             |
+| But there is an easier way.                 |     ,';".________.-.        
+| Just go here:                               |     ;';_'         )] 
+| https://github.com/commagere/commagere.com  |    ;             `-|  
+|                                             `.    `T-            |  
+ `-------------------------------------------._ \    |             |
+                                               `-;   |             |
+                                                     |..________..-|
+                                                    /\/ |________..|
+                                               ,'`./  >,(           |
+                                               \_.-|_/,-/   ii  |   |
+                                                `."' `-/  .-"""||    |   
+                                                 /`^"-;   |    ||____| 
+                                                /     /   `.__/  | ||
+                                                     /           | ||
+                                                                 | ||
+-->
+  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,15 +43,36 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% include 'views/includes/json_ld.html' %}
+    <style type="text/css">
+      /* Sticky footer styles -------------------------------------------------- */
+      html {
+        position: relative;
+        min-height: 100%;
+      }
+      body {
+        /* padding for fixed navbar on top*/
+        padding-top: 70px; 
+        /* Margin bottom by footer height */
+        margin-bottom: 50px;
+      }
+      #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        min-height: 50px;
+        background-color: #efefef; 
+      }
+    </style>
   </head>
   <body>
     {% include 'views/includes/google_tag_manager.html' %}
+    {% include 'views/includes/navbar.html' %}
+    
     {% block body %}{% endblock %}
-
+    {% include 'views/includes/footer.html' %}
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
-    
   </body>
 </html>
