@@ -10,9 +10,8 @@ api_version: 1
 threadsafe: true
 
 # https://cloud.google.com/appengine/docs/python/config/appconfig#Python_app_yaml_Builtin_handlers
-builtins:
-- appstats: on
-- deferred: on
+#builtins:
+#- deferred: on
 
 # by default we want static files to stay cached for at least a year
 default_expiration: "365d"
