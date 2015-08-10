@@ -30,6 +30,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> #}
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap -->
@@ -44,35 +47,48 @@
     <![endif]-->
     {% include 'views/includes/json_ld.html' %}
     <style type="text/css">
+      /* http://getbootstrap.com/examples/sticky-footer-navbar/ */
       /* Sticky footer styles -------------------------------------------------- */
       html {
         position: relative;
         min-height: 100%;
       }
       body {
+        /* Margin bottom by footer height */
+        margin-bottom: 60px;
         /* padding for fixed navbar on top*/
         padding-top: 70px; 
-        /* Margin bottom by footer height */
-        margin-bottom: 50px;
       }
-      #footer {
+      .footer {
         position: absolute;
         bottom: 0;
         width: 100%;
         /* Set the fixed height of the footer here */
-        min-height: 50px;
-        background-color: #efefef; 
+        height: 60px;
+        background-color: #f5f5f5; 
+      }
+      /* end sticky footer styles */
+      /* ensures fixed nav is handled well */
+
+      .container .text-muted {
+        margin: 20px 0;
+      }
+
+      .footer > .container {
+        padding-right: 15px;
+        padding-left: 15px;
       }
     </style>
   </head>
   <body>
     {% include 'views/includes/google_tag_manager.html' %}
     {% include 'views/includes/navbar.html' %}
-    
     {% block body %}{% endblock %}
     {% include 'views/includes/footer.html' %}
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/js/libs/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
