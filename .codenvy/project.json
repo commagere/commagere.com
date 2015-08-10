@@ -1,1 +1,1 @@
-{"mixinTypes":[],"builders":{"configs":{}},"runners":{"configs":{"project:/Copy%20of%20Django%20%20Python%202.7":{"ram":1000,"variables":{"configurationType":"python/web"},"options":{}}}},"type":"GAEPython","attributes":{"language":["python"]}}
+{"mixinTypes":["contribution"],"builders":{"configs":{}},"runners":{"configs":{"project:/Copy%20of%20Django%20%20Python%202.7":{"ram":1000,"variables":{"configurationType":"python/web"},"options":{}}}},"type":"GAEPython","attributes":{"contribute_branch":["master"],"contribute_mode":["contribute"],"language":["python"]}}
