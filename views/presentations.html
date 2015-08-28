@@ -1,0 +1,28 @@
+{% extends "views/base.html" %}
+{% set active_page = "presentations" %}
+{% block title %}Blake Commagere{% endblock %}
+{% block body %}
+
+{#<h1>  {{ lipsum(1) }}</h1><br>#}
+<div class="container-fluid">
+  <div class="row">
+    
+
+    <div class="col-md-3 col-md-offset-1">
+      {# https://medium.com/@Medium/embed-medium-anywhere-3eaed64aed8a #}
+      <script async src="https://static.medium.com/embed.js"></script><a class="m-profile" href="https://medium.com/@commagere">Blake Commagere</a>
+    </div>
+    <div class="col-md-4">
+      {# http://www.slideshare.net/widgets/slideshelf_widget #}
+      <iframe src="http://www.slideshare.net/blakecommagere/slideshelf" width="615px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+    </div>
+    <div class="col-md-4">
+      {# https://support.google.com/youtube/answer/171780?hl=en #}
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLIwh42hYo5FWzwUPGr2KtpX_htjcUepB7" frameborder="0" allowfullscreen></iframe>
+      
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

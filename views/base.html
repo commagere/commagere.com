@@ -82,6 +82,16 @@
   </head>
   <body>
     {% include 'views/includes/google_tag_manager.html' %}
+
+    {% set navigation_bar = [
+    ('#blog', 'blog', 'Blog'),
+    ('#presentations', 'presentations', 'Presentations'),
+    ('#videos', 'videos', 'Videos'),
+    ('#contact', 'contact', 'Contact Me')
+    ] -%}
+
+    {% set active_page = active_page|default('index') -%}
+
     {% include 'views/includes/navbar.html' %}
     {% block body %}{% endblock %}
     {% include 'views/includes/footer.html' %}
@@ -90,5 +100,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/static/js/libs/ie10-viewport-bug-workaround.js"></script>
+    
+    <script>
+    <!-- function for smooth scrolling on-page anchor tags -->
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 600);
+            return false;
+          }
+        }
+      });
+    });
+    </script>
+    
+    {# Since we use this on multiple pages, best to include here #}
+    {# https://dev.twitter.com/web/embedded-timelines #}    
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
   </body>
 </html>
