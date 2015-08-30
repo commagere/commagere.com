@@ -31,7 +31,7 @@ handlers:
 # our generic static directory
 - url: /static
   static_dir: static 
-# this regex lets us handle
+# this regex lets us handle static files 
 - url: /(.*\.(gif|jpg|htm|html|png|txt|xml|zip))
   static_files: static/\1
   upload: static/(.*\.(gif|jpg|htm|html|png|txt|xml|zip))  
