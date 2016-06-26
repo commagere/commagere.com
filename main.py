@@ -1,5 +1,5 @@
 import os
-from datetime import date
+# from datetime import date
 import jinja2
 import webapp2
 
@@ -15,10 +15,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 def prep_template_values():
-    current_year = date.today().year
+    # current_year = date.today().year
         
     template_values = {
-        'current_year': current_year,
     }
     return template_values    
   
@@ -44,8 +43,18 @@ class ContactHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('views/contact.html')
         self.response.write(template.render(template_values))
 
+        
+class TempHandler(webapp2.RequestHandler):
+    def get(self):
+        
+        template_values = prep_template_values()
+        template = JINJA_ENVIRONMENT.get_template('views/i.html')
+        self.response.write(template.render(template_values))
+
+        
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/presentations/', PresentationsHandler),
+    ('/i', TempHandler),
     ('/contact/', ContactHandler)
 ], debug=False)

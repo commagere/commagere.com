@@ -31,10 +31,15 @@ handlers:
 # our generic static directory
 - url: /static
   static_dir: static 
+# TODO: this is a temporary serving of this url
+- url: /apple-app-site-association
+  static_files: static/apple-app-site-association
+  upload: static/apple-app-site-association
+  mime_type: application/json
 # this regex lets us handle static files 
-- url: /(.*\.(gif|jpg|htm|html|png|txt|xml|zip))
+- url: /(.*\.(eot|gif|jpg|htm|html|png|svg|ttf|txt|woff|woff2|xml|zip))
   static_files: static/\1
-  upload: static/(.*\.(gif|jpg|htm|html|png|txt|xml|zip))  
+  upload: static/(.*\.(eot|gif|jpg|htm|html|png|svg|ttf|txt|woff|woff2|xml|zip))  
   
 # This handler tells app engine how to route requests to a WSGI application.
 - url: /.*   # This regex directs all routes to main.app
