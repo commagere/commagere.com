@@ -37,6 +37,7 @@ handlers:
 # This handler tells app engine how to route requests to a WSGI application.
 - url: /.*   # This regex directs all routes to main.app
   script: main.app
+  secure: always
 
 # Third party libraries that are included in the App Engine SDK must be listed
 # here if you want to use them.  See
