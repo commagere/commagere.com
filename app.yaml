@@ -1,8 +1,6 @@
-# We should probably comment this
+runtime: go125
+#env: flex
 
-runtime: go
-env: flex
-
-runtime_config:
-  operating_system: 'ubuntu22'
-  runtime_version: 1.25
+#runtime_config:
+#  operating_system: 'ubuntu22'
+#  runtime_version: 1.25
