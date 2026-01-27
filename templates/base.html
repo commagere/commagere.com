@@ -1,0 +1,40 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{template "title" .}}</title>
+</head>
+<body>
+    {{template "content" .}}
+    {{template "footer" .}}
+</body>
+</html>
+{{end}}
+
+{{define "footer"}}
+<footer>&copy; 2026 My Website</footer>
+{{end}}
+
+<!--
+                                                   ,-._.-._.-._.-._.-.
+                                                   `-.             ,-'
+ .-------------------------------------------.       |             | 
+| Want to view my source?                     |      |             |  
+| I'm flattered.                              |      |             | 
+|                                             |      |             |
+| But there is an easier way.                 |     ,';".________.-.        
+| Just go here:                               |     ;';_'         )] 
+| https://github.com/commagere/commagere.com  |    ;             `-|  
+|                                             `.    `T-            |  
+ `-------------------------------------------._ \    |             |
+                                               `-;   |             |
+                                                     |..________..-|
+                                                    /\/ |________..|
+                                               ,'`./  >,(           |
+                                               \_.-|_/,-/   ii  |   |
+                                                `."' `-/  .-"""||    |   
+                                                 /`^"-;   |    ||____| 
+                                                /     /   `.__/  | ||
+                                                     /           | ||
+                                                                 | ||
+-->    
