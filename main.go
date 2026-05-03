@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
+
+	// Serve static files from the static directory - only enable this if you aren't debugging via the dev_appserver.py file
+	// http.Handle("/static/", http.FileServer(http.Dir(".")))
+
 	http.HandleFunc("/", handle)
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -33,6 +37,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 
 	partialsFilenames := []string{
 		"templates/partials/header.html",
+		"templates/partials/json_ld.html",
 		"templates/partials/footer.html",
 		"templates/partials/navigation.html",
 	}
@@ -41,9 +46,6 @@ func handle(w http.ResponseWriter, r *http.Request) {
 
 	tmpl := template.Must(template.ParseFiles(templateFilenames...))
 
-	//tmpl := template.Must(template.ParseFiles(layoutFilename, pageFilename, partialsFilenames...))
-	// tmpl := template.Must(template.ParseGlob("templates/index.html"))
-	// err := tmpl.Execute(w, nil)
 	err := tmpl.ExecuteTemplate(w, layout, nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

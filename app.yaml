@@ -1,6 +1,43 @@
-runtime: go125
-#env: flex
+# This file specifies the application's runtime configuration
+# including URL routing, versions, static file uploads, etc. See
+# https://docs.cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=go#top
+# for details.
 
-#runtime_config:
-#  operating_system: 'ubuntu22'
-#  runtime_version: 1.25
+# For the standard environment, the runtime is required and must include the version 
+# (in this case go 1.25). You do not have to specificy the env.
+runtime: go125
+
+# For the flexible environment, the runtime is set to 'go' and you specify a runtime_config.
+# the runtime_version is optional, but if you want to use a specific version of Go, you must specify it here.
+# See https://cloud.google.com/appengine/docs/flexible/go/runtime for details.
+# runtime: go
+# env: flex
+# runtime_config:
+#   operating_system: 'ubuntu22'
+#   runtime_version: 1.25
+
+# by default we want static files to stay cached for at least a year
+default_expiration: "365d"
+
+handlers:
+
+  # handle the favicon here
+  - url: /favicon.ico
+    static_files: static/img/favicon.ico
+    upload: static/img/favicon.ico
+    mime_type: image/x-icon
+
+  # our generic static directory
+  - url: /static
+    static_dir: static 
+
+  # this regex lets us handle static files 
+  - url: /(.*\.(eot|gif|jpg|htm|html|png|svg|ttf|txt|woff|woff2|xml|zip))
+    static_files: static/\1
+    upload: static/(.*\.(eot|gif|jpg|htm|html|png|svg|ttf|txt|woff|woff2|xml|zip))  
+
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+
