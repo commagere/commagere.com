@@ -24,6 +24,21 @@ func main() {
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
+
+	// We want to redirect all requests to HTTPS and remove the www prefix if present.
+	// This is currently handled by Cloudflare, but we can also handle it here for local development or if Cloudflare is not used.
+	// // Get the host and protocol from the request
+	// host := r.Host
+	// proto := r.Header.Get("X-Forwarded-Proto")
+
+	// // Redirect to HTTPS and remove www prefix
+	// if strings.HasPrefix(host, "www.") || proto == "http" {
+	// 	cleanHost := strings.TrimPrefix(host, "www.")
+	// 	http.Redirect(w, r, "https://"+cleanHost+r.URL.Path, http.StatusMovedPermanently)
+	// 	return
+	// }
+
+	// Handle 404 for any path other than "/"
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return

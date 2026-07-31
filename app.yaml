@@ -16,28 +16,5 @@ runtime: go125
 #   operating_system: 'ubuntu22'
 #   runtime_version: 1.25
 
-# by default we want static files to stay cached for at least a year
-default_expiration: "365d"
 
-handlers:
-
-  # handle the favicon here
-  - url: /favicon.ico
-    static_files: static/img/favicon.ico
-    upload: static/img/favicon.ico
-    mime_type: image/x-icon
-
-  # our generic static directory
-  - url: /static
-    static_dir: static 
-
-  # this regex lets us handle static files 
-  - url: /(.*\.(eot|gif|jpg|htm|html|png|svg|ttf|txt|woff|woff2|xml|zip))
-    static_files: static/\1
-    upload: static/(.*\.(eot|gif|jpg|htm|html|png|svg|ttf|txt|woff|woff2|xml|zip))  
-
-  - url: /.*
-    secure: always
-    redirect_http_response_code: 301
-    script: auto
 
